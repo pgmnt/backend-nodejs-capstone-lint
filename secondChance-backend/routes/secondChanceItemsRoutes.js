@@ -71,12 +71,14 @@ router.post('/', upload.single('file'), async(req, res,next) => {
 // Get a single secondChanceItem by ID
 router.get('/:id', async (req, res, next) => {
     try {
+        
         //Step 4: task 1 - insert code here
         const db = await connectToDatabase();
         //Step 4: task 2 - insert code here
         const collection = db.collection("secondChanceItems");
         //Step 4: task 3 - insert code here
-        const secondChanceItem = await collection.findOne({id : id});
+        const id = req.params.id;
+        const secondChanceItem = await collection.findOne({id: id});
         //Step 4: task 4 - insert code here
         if (!secondChanceItem) {
             return res.status(404).send("secondChanceItem not found");
@@ -160,7 +162,7 @@ router.delete('/:id', async(req, res,next) => {
         //Step 6: task 4 - insert code here
         await collection.deleteOne({ id });
         res.json({'deleted': 'success'});
-        
+
     } catch (e) {
         next(e);
     }
