@@ -11,6 +11,9 @@ const app = express();
 app.use("*",cors());
 const port = 3060;
 
+const path = require('path');
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
 // Connect to MongoDB; we just do this one time
 connectToDatabase().then(() => {
     pinoLogger.info('Connected to DB');
