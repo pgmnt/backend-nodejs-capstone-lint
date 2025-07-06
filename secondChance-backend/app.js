@@ -7,7 +7,7 @@ const connectToDatabase = require('./models/db')
 // const { loadData } = require('./util/import-mongo/index')
 
 const app = express()
-app.use("*", cors())
+app.use('*', cors())
 const port = 3060
 
 const path = require('path')
@@ -35,10 +35,10 @@ const secondChanceItemsRoutes = require('./routes/secondChanceItemsRoutes')
 // {{insert code here}}
 const searchRoutes = require('./routes/searchRoutes')
 
-const pinoHttp = require('pino-http');
-const logger = require('./logger');
+const pinoHttp = require('pino-http')
+const logger = require('./logger')
 
-app.use(pinoHttp({ logger }));
+app.use(pinoHttp({ logger }))
 
 // Use Routes
 // authRoutes Step 2: add the authRoutes and to the server by using the app.use() method.
@@ -59,7 +59,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Internal Server Error')
 })
 
-app.get("/", (req,res) => {
+app.get('/', (req,res) => {
   res.send('Inside the server')
 })
 
